@@ -2,6 +2,7 @@ package com.valoyes.mockito.scrapbook;
 
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
 import org.junit.Before;
@@ -46,6 +47,14 @@ public class ClaseATest {
 		
 		assertSame(1, claseA.usesVoidMethod());
 		verify(claseB).voidMethod();
+	}
+	
+	@Test
+	public void usesVoidMethod_SampleOn_DoThrow() throws Exception {
+		
+		// when
+		doThrow(Exception.class).when(claseB).voidMethod();
+		claseA.usesVoidMethod();
 	}
 	
 	
