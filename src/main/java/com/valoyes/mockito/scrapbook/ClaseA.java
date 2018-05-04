@@ -14,7 +14,7 @@ public class ClaseA {
 		} catch (Exception e) {
 			new RuntimeException(e);
 		}
-		return 0;
+		return 1;
 	}
 	
 	
