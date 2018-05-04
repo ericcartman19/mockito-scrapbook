@@ -57,6 +57,24 @@ public class ClaseATest {
 		claseA.usesVoidMethod();
 	}
 	
+	@Test
+	public void testConsecutiveCalls() throws Exception {
+		// CONSECUTIVE CALLS EXAMPLE
+		
+		// indica que la primera vez que se llame al metodo debe hacer nada
+		// sin embargo la segunda debe lanzar un exception
+		// when
+		doNothing().doThrow(Exception.class).when(claseB).voidMethod();
+		
+		
+		// then
+		claseA.usesVoidMethod();
+		// la primera vez que llamamos al metodo no hace nada
+		verify(claseB).voidMethod();
+		// esta vez lanza la exception
+		claseA.usesVoidMethod(); 
+	}
+	
 	
 
 }
